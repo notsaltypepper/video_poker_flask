@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='style/style.css') }}">
+    <title>VideoPoker</title>
+</head>
+<body>
+    <br>
+    <div class="columns">  
+        <div class="column is-11">Welcome to Ipssi Casino !</div>
+      </div>
+    <div class="header-playground">
+        <p>Argent mis en jeu : {{ session['wallet'] }} $</p>
+    </div>
+    <div>
+        {% if session['error-form-bet'] %}
+        <div class="notification is-danger">
+            {{ session["error-form-bet"] }}
+          </div>
+        {% endif %}
+    </div>
+    <div class="card-playground">
+        <img class="card-img" src="{{ url_for('static',filename='cards/back.png') }}" alt="card-back-video-poker"/>
+        <img class="card-img" src="{{ url_for('static',filename='cards/back.png') }}" alt="card-back-video-poker"/>
+        <img class="card-img" src="{{ url_for('static',filename='cards/back.png') }}" alt="card-back-video-poker"/>
+        <img class="card-img" src="{{ url_for('static',filename='cards/back.png') }}" alt="card-back-video-poker"/>
+        <img class="card-img" src="{{ url_for('static',filename='cards/back.png') }}" alt="card-back-video-poker"/>
+    </div>
+    <form method="POST">
+        <input class="input is-info" name="bet" type="number" min="1" placeholder="Entrez votre mise" required>
+        <br>
+        <input class="button is-success" type="submit" value="Jouer">
+    </form>
+</body>
+</html>

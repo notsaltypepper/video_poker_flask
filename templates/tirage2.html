@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='style/style.css') }}">  
+    <title>Document</title>
+</head>
+<body>
+    <br>
+    <div class="columns">  
+        <div class="column is-11">Welcome to Ipssi Casino !</div>
+      </div>
+    <div class="header-playground">
+        <p class="mise">Votre mise : {{ session['bet'] }} $</p>
+    </div>
+        <p> {{ session['resultat']}} <br> Vous remportez : {{ session['gain'] }} $</p>
+    <div class="card-playground">
+        {% for card in session['tirage1'] %}
+        <label class="form-check-label" for="{{ card }}">
+            <img class="card-img" data-card="{{card}}" data-keep="true" src="{{ url_for('static',filename='cards/'+card+'.png') }}" alt="card-video-poker" />
+        </label>
+        {% endfor %}
+    </div>
+    <div>
+        <button class="button is-success" onclick="restart()">Rejouer</button>
+        <button class="button is-warning" onclick="goHomePage()">Retour à l'accueil</button>
+    </div>
+    
+    <script src="{{ url_for('static', filename= 'script.js') }}"> </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='style/style.css') }}">  
+    <title>VideoPoker</title>
+</head>
+<body>
+    <br>
+    <div class="columns">  
+        <div class="column is-11">Welcome to Ipssi Casino !</div>
+      </div>
+    <div class="header-playground">
+        <p class="mise">Votre mise : {{ session['bet'] }} $</p>
+        <h3>Cliquez sur les cartes que vous ne voulez pas garder.</h3>
+    </div>
+    <form action="/round1"  method="post">
+        <div class="card-playground">
+            {% for card in session['tirage1'] %}
+            <input class="label" type="checkbox" class="form-check-input" id="{{ card }}" name="{{ loop.index0 }}" />
+            <label class="form-check-label" for="{{ card }}">
+                <img class="card-img" data-card="{{card}}" data-keep="true" src="{{ url_for('static',filename='cards/'+card+'.png') }}" alt="card-video-poker" onclick="clickOnCardForReverse(this)"/>
+            </label>
+            {% endfor %}
+        </div>
+        <input class="button is-success" type="submit" value="valider">
+    </form>
+    <script src="{{ url_for('static', filename= 'script.js') }}"> </script>
+</body>
+</html>

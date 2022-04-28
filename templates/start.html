@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='style/style.css') }}">
+    <title>VideoPoker</title>
+</head>
+<body>
+    <br>
+      <div class="columns content is-large">  
+        <div class="column is-11">Welcome to Ipssi Casino !</div>
+      </div>
+    <div>
+        {% if session['error-form'] %}
+        <div class="notification is-danger">
+            {{ session["error-form"] }}
+          </div>
+
+        {% endif %}
+        <form method="post">
+            <input class="input is-info" class="is-6" name="age" type="number" value="O" min="12" max="120" placeholder="Entrez votre âge" required>
+            <input class="input is-info" name="wallet" type="number" value="O" min="1" placeholder="Entrez le montant à mettre en jeu" required>
+            <input class="button is-success is-6" type="submit" value="valider">
+        </form>
+    </div>
+</body>
+</html>
